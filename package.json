@@ -1,0 +1,19 @@
+{
+  "name": "my-razzle-app",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "elm-package install -y",
+    "start": "elm make src/Main.elm --output=\"public/elm.js\" && razzle start",
+    "build": "razzle build",
+    "test": "razzle test --env=jsdom",
+    "start:prod": "NODE_ENV=production node build/server.js"
+  },
+  "dependencies": {
+    "elm-static-html-lib": "^0.0.8-alpha.2",
+    "elm-webpack-loader": "^4.3.1",
+    "express": "^4.15.4",
+    "node-elm-compiler": "^4.3.3",
+    "razzle": "^0.8.3"
+  }
+}
