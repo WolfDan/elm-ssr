@@ -4,6 +4,13 @@ This is a Elm ssr experiment, it uses Razzle to server the http responses
 
 ### This repository still wip, I need to fix some issues with Elm webpack loader isn't working correctly with Razzle webpack...
 
+## To run: 
+
+```
+yarn install
+yarn start
+```
+
 ## Libraries used:
 
 - [Razzle](https://github.com/jaredpalmer/razzle)
