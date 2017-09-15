@@ -6,22 +6,49 @@ module.exports = {
 
     appConfig.module.rules[2].exclude.push(/\.(elm)$/)
 
+    appConfig.module.noParse = [/.elm$/]
     appConfig.resolve.extensions = config.resolve.extensions.concat([
         '.elm'
       ]);
-    // appConfig.module.noParse = /.elm$/
-    // appConfig.entry = './src/client.js'
-    appConfig.module.rules.push(
+    
+    if(dev) {
+      appConfig.module.rules.push(
         {
         test: /\.elm$/,
         exclude: [/elm-stuff/, /node_modules/],
-        loader: require.resolve('elm-webpack-loader'),
-        options: {
-            verbose: true,
-            warn: true
-        }
+        use: [
+          {
+            loader: 'elm-hot-loader'
+          },
+          {
+            loader: 'elm-webpack-loader',
+            options: {
+              verbose: true,
+              warn: true,
+              // debug: true,
+              pathToMake: require('elm/platform').executablePaths['elm-make'],
+              forceWatch: true
+            }
+          }
+        ],
       })
-
+    }
+    else { // Production
+      appConfig.module.rules.push(
+        {
+        test: /\.elm$/,
+        exclude: [/elm-stuff/, /node_modules/],
+        use: [
+          {
+            loader: 'elm-webpack-loader',
+            options: {
+              pathToMake: require('elm/platform').executablePaths['elm-make'],
+            }
+          }
+        ],
+      })
+    }
+    
     return appConfig;
   },
 };
