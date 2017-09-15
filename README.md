@@ -3,7 +3,7 @@
 This is a Elm ssr experiment, it uses Razzle to server the http responses.
 `razzle.config.js` is the equivalent to `webpack.config.js`
 
-### This repository still wip, I need to fix some issues with Elm webpack loader isn't working correctly with Razzle webpack...
+### This repository still wip, I need to implement HMR, the "elm-hot-loader" library don't work with razzle
 
 ## To run: 
 

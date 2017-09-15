@@ -1,12 +1,12 @@
-// Here is supossed to hot reaload any Main or child changes, 
-// BUT I can't get the Main correctly, if I call `require('./Main');`
-// it returns the path of the file if I call .Main is undefined oO
+var Elm = require('./Main');
 
-// require('./Main');
-// console.log(Elm)
-// var app = Elm.Main.embed( document.getElementById( 'root' ) );
-// Elm.Main.embed(document.getElementById('root'));
+// I think is better call this at the end of the body tag, the bundle up and the script down
+Elm.Main.embed( document.getElementById( "root" ) );
 
 if (module.hot) {
   module.hot.accept();
+  module.hot.accept('./Main', () => {
+    const nextElm = require('./Main').Main;
+    nextElm.embed( document.getElementById( "root" ) );
+  })
 }

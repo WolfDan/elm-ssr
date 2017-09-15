@@ -24,20 +24,15 @@ server
         <meta name="viewport" content="width=device-width, initial-scale=1">
         ${assets.client.css
           ? `<link rel="stylesheet" href="${assets.client.css}">`
-          : ''}
-          <!-- This script elm is provisional... -->
-          <script src="elm.js"></script>
-         ${process.env.NODE_ENV === 'production'
-           ? `<script src="${assets.client.js}"></script>`
-           : `<script src="${assets.client.js}"></script>`}
+          : ''}          
+         
     </head>
     <body>
         <div id="root">${markup}</div>
     </body>
-    <script>
-    /*** Provisional until I figure out hot make Elm Webpack loader run correctly ***/
-    Elm.Main.embed(document.getElementById('root'));
-    </script>
+    ${process.env.NODE_ENV === 'production'
+    ? `<script src="${assets.client.js}"></script>`
+    : `<script src="${assets.client.js}"></script>`}
   </html>`
     );
   });
