@@ -35,6 +35,9 @@ server
     : `<script src="${assets.client.js}"></script>`}
   </html>`
     );
+  }).catch((error) => {
+    console.log(error);
+    res.status(500).send(`<h1>An error ocurred on server, please try later, or contact support</h1>`);
   });
 
 });

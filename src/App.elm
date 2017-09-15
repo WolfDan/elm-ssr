@@ -52,5 +52,5 @@ view model =
                 [ text "+ 1" ]
             , text <| toString model
             ]
-        , p [] [ text "Still work in progress, hot reload don't work correctly, webpack loader for elm is not working good with razzle dunno why" ]
+        , p [] [ text "A simple example of how to make Razzle and Elm work together!" ]
         ]
