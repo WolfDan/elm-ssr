@@ -1,6 +1,5 @@
 import elmStaticHtml from "elm-static-html-lib";
 import express from 'express';
-require('./Main');
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
