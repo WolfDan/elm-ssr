@@ -11,11 +11,11 @@
   },
   "dependencies": {
     "express": "^4.15.4",
-    "razzle": "^0.8.3",
     "elm-static-html-lib": "^0.0.8-alpha.2"
   },
   "devDependencies": {
     "elm-webpack-loader": "^4.3.1",
-    "elm-hot-loader": "^0.5.4"
+    "elm-hot-loader": "^0.5.4",
+    "razzle": "^0.8.3"
   }
 }
