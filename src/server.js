@@ -4,15 +4,19 @@ import express from 'express';
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
 const model = { counter: 5 };
-const options = { model : model, decoder: "App.decodeModel" };
+
+
+var isCompiled = false;
 
 const server = express();
 server
 .disable('x-powered-by')
 .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
 .get('/*', (req, res) => {
+  var options = { model : model, decoder: "App.decodeModel", alreadyRun: isCompiled };
   elmStaticHtml(process.cwd(), "App.view", options)
   .then((generatedHtml) => {
+    isCompiled = true;
     const markup = generatedHtml;
     res.send(
       `<!doctype html>
